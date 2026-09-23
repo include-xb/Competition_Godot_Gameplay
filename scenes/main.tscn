@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://c8echfsjmf2sj"]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(80, 1, 80)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ground"]
+size = Vector3(80, 1, 80)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.18, 0.21, 0.2, 1)
+roughness = 0.95
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wall"]
+size = Vector3(40, 22, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall"]
+size = Vector3(40, 22, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wall"]
+albedo_color = Color(0.42, 0.24, 0.22, 1)
+roughness = 0.9
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tower"]
+size = Vector3(6, 18, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tower"]
+size = Vector3(6, 18, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tower"]
+albedo_color = Color(0.24, 0.31, 0.42, 1)
+roughness = 0.85
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_beam"]
+size = Vector3(30, 1, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_beam"]
+size = Vector3(30, 1, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_beam"]
+albedo_color = Color(0.52, 0.38, 0.2, 1)
+roughness = 0.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_platform"]
+size = Vector3(12, 1, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_platform"]
+size = Vector3(12, 1, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_platform"]
+albedo_color = Color(0.16, 0.38, 0.34, 1)
+roughness = 0.85
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_anchor"]
+radius = 0.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_anchor"]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_anchor"]
+albedo_color = Color(1, 0.82, 0.35, 1)
+emission_enabled = true
+emission = Color(1, 0.72, 0.25, 1)
+emission_energy_multiplier = 3.0
+
+[node name="Main" type="Node3D" unique_id=41358696]
+
+[node name="Level" type="Node3D" parent="." unique_id=127751624]
+
+[node name="Ground" type="StaticBody3D" parent="Level" unique_id=1034139474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Ground" unique_id=1640327654]
+shape = SubResource("BoxShape3D_ground")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Ground" unique_id=1999164964]
+mesh = SubResource("BoxMesh_ground")
+surface_material_override/0 = SubResource("StandardMaterial3D_ground")
+
+[node name="WallNorth" type="StaticBody3D" parent="Level" unique_id=1459520366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -30)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/WallNorth" unique_id=1671607046]
+shape = SubResource("BoxShape3D_wall")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/WallNorth" unique_id=1424446083]
+mesh = SubResource("BoxMesh_wall")
+surface_material_override/0 = SubResource("StandardMaterial3D_wall")
+
+[node name="TowerEast" type="StaticBody3D" parent="Level" unique_id=1157683670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 9, 9.217258)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/TowerEast" unique_id=1882932446]
+shape = SubResource("BoxShape3D_tower")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/TowerEast" unique_id=1179293534]
+mesh = SubResource("BoxMesh_tower")
+surface_material_override/0 = SubResource("StandardMaterial3D_tower")
+
+[node name="BeamHigh" type="StaticBody3D" parent="Level" unique_id=1073539914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2203193, -6.3543925)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/BeamHigh" unique_id=1113232567]
+shape = SubResource("BoxShape3D_beam")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/BeamHigh" unique_id=1123843489]
+mesh = SubResource("BoxMesh_beam")
+surface_material_override/0 = SubResource("StandardMaterial3D_beam")
+
+[node name="PlatformFar" type="StaticBody3D" parent="Level" unique_id=1584481937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.581991, 1.0668449, 4.0158854)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/PlatformFar" unique_id=874641988]
+shape = SubResource("BoxShape3D_platform")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/PlatformFar" unique_id=296613380]
+mesh = SubResource("BoxMesh_platform")
+surface_material_override/0 = SubResource("StandardMaterial3D_platform")
+
+[node name="Anchors" type="Node3D" parent="Level" unique_id=1364631674]
+
+[node name="AnchorBeam" type="StaticBody3D" parent="Level/Anchors" unique_id=367012266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.504302, -6.776331)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Anchors/AnchorBeam" unique_id=1640394880]
+shape = SubResource("SphereShape3D_anchor")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Anchors/AnchorBeam" unique_id=1985612526]
+mesh = SubResource("SphereMesh_anchor")
+surface_material_override/0 = SubResource("StandardMaterial3D_anchor")
+
+[node name="AnchorTower" type="StaticBody3D" parent="Level/Anchors" unique_id=911222889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 20, 9.20215)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Anchors/AnchorTower" unique_id=1219221147]
+shape = SubResource("SphereShape3D_anchor")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Anchors/AnchorTower" unique_id=684847572]
+mesh = SubResource("SphereMesh_anchor")
+surface_material_override/0 = SubResource("StandardMaterial3D_anchor")
+
+[node name="AnchorPlatform" type="StaticBody3D" parent="Level/Anchors" unique_id=1238574293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5565643, 6.0609474, 3.9040756)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Anchors/AnchorPlatform" unique_id=284463250]
+shape = SubResource("SphereShape3D_anchor")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Anchors/AnchorPlatform" unique_id=141742435]
+mesh = SubResource("SphereMesh_anchor")
+surface_material_override/0 = SubResource("StandardMaterial3D_anchor")
+
+[node name="Player" parent="." unique_id=472198590 instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2217517, 4.701473, 7.4149218)
